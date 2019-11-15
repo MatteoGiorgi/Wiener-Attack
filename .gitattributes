@@ -1,4 +1,4 @@
-* linguist-language=Wolfram Mathematica
+* linguist-language=Mathematica
 
 *.md linguist-detectable=true
 docs/* linguist-documentation
