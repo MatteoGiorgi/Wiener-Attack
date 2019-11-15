@@ -1,3 +1,5 @@
+#!/usr/bin/env wolframscript
+
 e = 7502876735617; n = 28562942440499; (* esempio di chiave pubblica attaccabile *)
 fc = ContinuedFraction[e/n];
 cList = Convergents[fc];

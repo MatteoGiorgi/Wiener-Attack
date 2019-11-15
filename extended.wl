@@ -1,3 +1,5 @@
+#!/usr/bin/env wolframscript
+
 r = 4; Dl = 2; (*da regolare in base alle esigenze del caso*)
 CClist = Partition[Rest[cList],2,1];
 UVlist = Tuples[Range[2^r],2];
