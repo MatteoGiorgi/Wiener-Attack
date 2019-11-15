@@ -1,1 +1,10 @@
 * linguist-language=Wolfram Mathematica
+
+*.md linguist-detectable=true
+docs/* linguist-documentation
+
+* text=auto eol=lf
+
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
