@@ -23,7 +23,7 @@ $$\biggl\lfloor \frac{e}{c_3} \biggr\rfloor = \biggl\lfloor \frac{58549809}{\fra
 Now, $\widetilde{\phi}$ allow us to obtain $p{=}60317$, $q{=}40577$ prime factors of $N$.
 
 <p align="center">
-  <embed src="src/wiener_attack.pdf" type="application/pdf" width="100%" height="600px"/>
+  <embed src="https://matteogiorgi.github.io/wiener_attack/src/wiener_attack.pdf" type="application/pdf" width="100%" height="600px"/>
 </p>
 
 
