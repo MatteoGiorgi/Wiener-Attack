@@ -5,9 +5,9 @@ title: "Wiener attack"
 
 
 
-Few years ago I wrote a brief paper regarding RSA protocol and the attack M.J. Wiener published in 1990. I tried to create a self-contained work, emphasising the power of playing with [continued fractions](https://en.wikipedia.org/wiki/Continued_fraction) using *Legendre theorem*. The attack states that under certain conditions[^1] the RSA module $N$ could be factorized in $\mathcal{O}\big(log_2(N)\big)$, let's take a peak on how it works using an example (in the paper you will find the same example implemented in Wolfram Mathematica).
+Few years ago I wrote a brief paper regarding RSA protocol and the attack M.J. Wiener published in 1990. I tried to create a self-contained work, emphasising the power of playing with [continued fractions](https://en.wikipedia.org/wiki/Continued_fraction) using *Legendre theorem*. The attack states that under certain conditions[^1] the RSA module $N$ could be factorized in $\mathcal{O}\big(log_2(N)\big)$, let's take a peak on how it works using an example.
 
-Given the public key $(e,N)$ of an RSA cryptosystem with a small private exponent
+There are three numbers you need to know when we talk about the RSA cryptosystem: the public and private exponents $e$ and $d$, plus the module $N$. So, given the public key $(e,N)$ of an RSA with a small private exponent
 
 $$(e,N) = (58549809,2447482909)$$
 
@@ -20,7 +20,7 @@ Using the search algorithm derived from Wiener Theorem, we notice that the fourt
 
 $$\biggl\lfloor \frac{e}{c_3} \biggr\rfloor = \biggl\lfloor \frac{58549809}{\frac{5}{209}} \biggr\rfloor = 2447382016$$
 
-Now, $\widetilde{\phi}$ allow us to obtain $p{=}60317$, $q{=}40577$ prime factors of $N$.
+Now that we have found a possible value for the Euler function $\phi$, we won ✌️🥳. The two prime factors of the RSA module has to be $60317$ and $40577$! Was it too quick? Take a look at the paper below, it will satisfy any doubts together with some code in Wolfram Mathematica 🤓.
 
 <p align="center">
   <embed src="src/wiener_attack.pdf" type="application/pdf" width="100%" height="600px"/>
@@ -29,7 +29,7 @@ Now, $\widetilde{\phi}$ allow us to obtain $p{=}60317$, $q{=}40577$ prime factor
 
 
 
-[^1]: The sufficient condition for the attack to be effective concern the private exponent $d$:
+[^1]: The sufficient condition for the attack to be effective lies in the private exponent $d$:
 $$d < \frac{N}{2\bigl(N{-}\phi(N)\bigr)g_0k_0}$$
 such exponent will be simply called *small*.
 

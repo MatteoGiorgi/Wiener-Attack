@@ -285,21 +285,21 @@ $(document).ready(function () {
 </div>
 
 
-<p>Few years ago I wrote a brief paper regarding RSA protocol and the attack M.J. Wiener published in 1990. I tried to create a self-contained work, emphasising the power of playing with <a href="https://en.wikipedia.org/wiki/Continued_fraction">continued fractions</a> using <em>Legendre theorem</em>. The attack states that under certain conditions<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> the RSA module <span class="math inline">\(N\)</span> could be factorized in <span class="math inline">\(\mathcal{O}\big(log_2(N)\big)\)</span>, let’s take a peak on how it works using an example (in the paper you will find the same example implemented in Wolfram Mathematica).</p>
-<p>Given the public key <span class="math inline">\((e,N)\)</span> of an RSA cryptosystem with a small private exponent</p>
+<p>Few years ago I wrote a brief paper regarding RSA protocol and the attack M.J. Wiener published in 1990. I tried to create a self-contained work, emphasising the power of playing with <a href="https://en.wikipedia.org/wiki/Continued_fraction">continued fractions</a> using <em>Legendre theorem</em>. The attack states that under certain conditions<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> the RSA module <span class="math inline">\(N\)</span> could be factorized in <span class="math inline">\(\mathcal{O}\big(log_2(N)\big)\)</span>, let’s take a peak on how it works using an example.</p>
+<p>There are three numbers you need to know when we talk about the RSA cryptosystem: the public and private exponents <span class="math inline">\(e\)</span> and <span class="math inline">\(d\)</span>, plus the module <span class="math inline">\(N\)</span>. So, given the public key <span class="math inline">\((e,N)\)</span> of an RSA with a small private exponent</p>
 <p><span class="math display">\[(e,N) = (58549809,2447482909)\]</span></p>
 <p>the expansion of <span class="math inline">\(\frac{e}{N}\)</span> and its convergents will be</p>
 <p><span class="math display">\[\frac{e}{N} = \bigl[\,0;\,41,\,1,\,4,\,23,\,\dots\,\bigr]\]</span> <span class="math display">\[\{ c_i \}_{i{\leq}15} = \biggl\{0,\,\frac{1}{41},\,\frac{1}{42},\,\frac{5}{209},\,\frac{116}{4849},\,\dots\biggr\}\]</span></p>
 <p>Using the search algorithm derived from Wiener Theorem, we notice that the fourth convergent <span class="math inline">\(c_3{=}\frac{5}{209}\)</span> is the right candidate <span class="math inline">\(\widetilde{\phi}\)</span> for <span class="math inline">\(\phi(N)\)</span>:</p>
 <p><span class="math display">\[\biggl\lfloor \frac{e}{c_3} \biggr\rfloor = \biggl\lfloor \frac{58549809}{\frac{5}{209}} \biggr\rfloor = 2447382016\]</span></p>
-<p>Now, <span class="math inline">\(\widetilde{\phi}\)</span> allow us to obtain <span class="math inline">\(p{=}60317\)</span>, <span class="math inline">\(q{=}40577\)</span> prime factors of <span class="math inline">\(N\)</span>.</p>
+<p>Now that we have found a possible value for the Euler function <span class="math inline">\(\phi\)</span>, we won ✌️🥳. The two prime factors of the RSA module has to be <span class="math inline">\(60317\)</span> and <span class="math inline">\(40577\)</span>! Was it too quick? Take a look at the paper below, it will satisfy any doubts together with some code in Wolfram Mathematica 🤓.</p>
 <p align="center">
 <embed src="src/wiener_attack.pdf" type="application/pdf" width="100%" height="600px"/>
 </p>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The sufficient condition for the attack to be effective concern the private exponent <span class="math inline">\(d\)</span>: <span class="math display">\[d &lt; \frac{N}{2\bigl(N{-}\phi(N)\bigr)g_0k_0}\]</span> such exponent will be simply called <em>small</em>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>The sufficient condition for the attack to be effective lies in the private exponent <span class="math inline">\(d\)</span>: <span class="math display">\[d &lt; \frac{N}{2\bigl(N{-}\phi(N)\bigr)g_0k_0}\]</span> such exponent will be simply called <em>small</em>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
